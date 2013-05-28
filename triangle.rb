@@ -13,7 +13,21 @@
 # and
 #   about_triangle_project_2.rb
 #
+
 def triangle(a, b, c)
+  if a <= 0 || b <= 0 || c <= 0
+    raise TriangleError, "You gotta nonexistent triangle!"
+  end
+  x, y, z = [a, b, c].sort!
+  raise TriangleError, "That's not a thing!" if x + y <= z
+  arr = [x, y, z]
+  if arr.uniq.length == 1
+    return :equilateral
+  elsif arr.uniq.length == 2
+    return :isosceles
+  else
+    return :scalene
+  end
   # WRITE THIS CODE
 end
 
